@@ -1,4 +1,4 @@
-package com.example.assignment1;
+package com.saadullahkhan.i190474;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,31 +10,35 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class CreateAccount extends AppCompatActivity {
+public class SignIn extends AppCompatActivity {
     TextView show ;
     TextView hide ;
     EditText password;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_account);
-        show = findViewById(R.id.showCreateAccount);
-        hide = findViewById(R.id.hideCreateAccount);
-        password = findViewById(R.id.passwordCreateAccount);
+        setContentView(R.layout.activity_sign_in);
+        show = findViewById(R.id.showSignIn);
+        hide = findViewById(R.id.hideSignIn);
+        password = findViewById(R.id.passwordSignIn);
     }
-    public void onSignInCA(View v) {
-        startActivity(new Intent(CreateAccount.this, SignIn.class));
+    public void onSignUpSI(View v) {
+        startActivity(new Intent(SignIn.this, SignUpOptions.class));
     }
-    public void onShowCreateAccount(View v) {
+    public void onShowSignIn(View v) {
         show.setVisibility(View.INVISIBLE);
         hide.setVisibility(View.VISIBLE);
         password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-
     }
-    public void onHideCreateAccount(View v) {
+    public void onHideSignIn(View v) {
         show.setVisibility(View.VISIBLE);
         hide.setVisibility(View.INVISIBLE);
         password.setTransformationMethod(PasswordTransformationMethod.getInstance());
-
     }
+
+    public void onClickSignIn(View v) {
+        startActivity(new Intent(SignIn.this, Home.class));
+    }
+
 }

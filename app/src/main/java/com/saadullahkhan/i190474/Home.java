@@ -1,8 +1,7 @@
-package com.example.assignment1;
+package com.saadullahkhan.i190474;
 
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -14,9 +13,6 @@ import android.view.View;
 import android.widget.Button;
 
 import com.google.android.material.navigation.NavigationView;
-
-import java.util.NavigableMap;
-import java.util.Objects;
 
 
 public class Home extends AppCompatActivity {
