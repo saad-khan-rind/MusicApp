@@ -15,6 +15,6 @@ public class PostComment extends AppCompatActivity {
     }
 
     public void  onHomeComment(View v){
-        startActivity(new Intent(PostComment.this, Home.class));
+        finish();
     }
 }

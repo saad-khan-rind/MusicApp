@@ -52,6 +52,6 @@ public class Liked extends AppCompatActivity {
 
     }
     public void onHomeLiked(View v){
-        startActivity(new Intent(Liked.this, Home.class));
+        finish();
     }
 }

@@ -50,6 +50,6 @@ public class Later extends AppCompatActivity {
         });
     }
     public void onHomeLater(View v){
-        startActivity(new Intent(Later.this, Home.class));
+        finish();
     }
 }

@@ -97,7 +97,7 @@ public class Record extends AppCompatActivity {
 
     }
     public void onUploadRecord(View v){
-        startActivity(new Intent(Record.this, UploadMusic.class));
+        finish();
     }
     public void onSelectRecord(View v){
         startActivity(new Intent(Record.this, SelectPlaylist.class));

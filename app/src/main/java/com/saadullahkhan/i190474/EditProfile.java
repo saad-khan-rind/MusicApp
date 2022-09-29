@@ -14,6 +14,6 @@ public class EditProfile extends AppCompatActivity {
         setContentView(R.layout.activity_edit_profile);
     }
     public void onProfileEdit(View v){
-        startActivity(new Intent(EditProfile.this, Profile.class));
+        finish();
     }
 }

@@ -14,7 +14,7 @@ public class Profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
     }
     public void onHomeProfile(View v){
-        startActivity(new Intent(Profile.this, Home.class));
+        finish();
     }
 
     public void onEditProfile(View v){

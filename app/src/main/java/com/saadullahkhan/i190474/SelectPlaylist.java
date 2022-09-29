@@ -14,7 +14,7 @@ public class SelectPlaylist extends AppCompatActivity {
         setContentView(R.layout.activity_select_playlist);
     }
     public void onRecordSelect(View v){
-        startActivity(new Intent(SelectPlaylist.this, Record.class));
+        finish();
     }
     public void onHomeSelect(View v){
         startActivity(new Intent(SelectPlaylist.this, Home.class));

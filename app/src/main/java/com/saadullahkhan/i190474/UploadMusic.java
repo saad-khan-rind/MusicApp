@@ -18,6 +18,6 @@ public class UploadMusic extends AppCompatActivity {
         startActivity(new Intent(UploadMusic.this, Record.class));
     }
     public void onAddUpload(View v){
-        startActivity(new Intent(UploadMusic.this, AddMusic.class));
+       finish();
     }
 }

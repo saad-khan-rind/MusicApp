@@ -14,7 +14,7 @@ public class AddMusic extends AppCompatActivity {
         setContentView(R.layout.activity_add_music);
     }
     public void onHomeAdd(View v){
-        startActivity(new Intent(AddMusic.this, Home.class));
+        finish();
     }
 
     public void onUploadAdd(View v){

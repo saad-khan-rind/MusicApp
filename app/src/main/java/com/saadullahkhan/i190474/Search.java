@@ -14,6 +14,6 @@ public class Search extends AppCompatActivity {
         setContentView(R.layout.activity_search);
     }
     public void onHomeSearch(View v){
-        startActivity(new Intent(Search.this, Home.class));
+        finish();
     }
 }

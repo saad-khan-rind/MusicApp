@@ -73,6 +73,6 @@ public class SongTitle extends AppCompatActivity {
         });
     }
     public void onHomeTitle(View v){
-        startActivity(new Intent(SongTitle.this, Home.class));
+        finish();
     }
 }
