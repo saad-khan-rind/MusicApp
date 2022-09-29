@@ -41,7 +41,7 @@ public class Home extends AppCompatActivity {
                     startActivity(new Intent(Home.this, EditProfile.class));
                 }
                 if(id == R.id.i3){
-                    startActivity(new Intent(Home.this, SignIn.class));
+                    finish();
                 }
                 return true ;
             }
