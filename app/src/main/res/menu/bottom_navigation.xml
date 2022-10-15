@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/bNavLiked"
+        android:icon="@drawable/liked"
+        android:title="@string/liked"
+        />
+    <item android:id="@+id/bNavAdd"
+        android:icon="@drawable/add"
+        android:title="@string/add"
+        />
+
+    <item android:id="@+id/bNavHome"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="@string/Home"
+        />
+    <item android:id="@+id/bNavSearch"
+        android:icon="@drawable/search"
+        android:title="@string/search"
+        />
+    <item android:id="@+id/bNavLater"
+        android:icon="@drawable/later"
+        android:title="@string/later"
+        />
+</menu>

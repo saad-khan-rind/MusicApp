@@ -1,19 +1,26 @@
 package com.saadullahkhan.i190474;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class Record extends AppCompatActivity {
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+public class RecordFragment extends Fragment {
     ImageView record1 ;
     ImageView record2 ;
     ImageView record3 ;
     ImageView record4 ;
     ImageView recordBar ;
+    Button back;
 
 
     TextView recordTime;
@@ -22,18 +29,18 @@ public class Record extends AppCompatActivity {
     TextView recordNext;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_record);
-        record1 = findViewById(R.id.recordBtn1);
-        record2 = findViewById(R.id.recordBtn2);
-        record3 = findViewById(R.id.recordBtn3);
-        record4 = findViewById(R.id.recordBtn4);
-        recordBar = findViewById(R.id.recordBar);
-        recordTime = findViewById(R.id.recordTime);
-        recordTime2 = findViewById(R.id.recordTime2);
-        recordTime3 = findViewById(R.id.recordTime3);
-        recordNext = findViewById(R.id.recordNext);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        back = getView().findViewById(R.id.backRecord);
+        record1 = getView().findViewById(R.id.recordBtn1);
+        record2 = getView().findViewById(R.id.recordBtn2);
+        record3 = getView().findViewById(R.id.recordBtn3);
+        record4 = getView().findViewById(R.id.recordBtn4);
+        recordBar = getView().findViewById(R.id.recordBar);
+        recordTime = getView().findViewById(R.id.recordTime);
+        recordTime2 = getView().findViewById(R.id.recordTime2);
+        recordTime3 = getView().findViewById(R.id.recordTime3);
+        recordNext = getView().findViewById(R.id.recordNext);
         record1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -94,13 +101,28 @@ public class Record extends AppCompatActivity {
 
             }
         });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().onBackPressed();
+            }
+        });
+        recordNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment fragment = new SelectPlayListFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragmentContainer, fragment, "selectPlayList");
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
+    }
 
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_record,container,false);
     }
-    public void onUploadRecord(View v){
-        finish();
-    }
-    public void onSelectRecord(View v){
-        startActivity(new Intent(Record.this, SelectPlaylist.class));
-    }
-
 }

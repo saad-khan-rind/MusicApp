@@ -19,7 +19,7 @@
         android:background="@drawable/ic_baseline_arrow_back_24"
         android:clickable="true"
         android:focusable="true"
-        android:onClick="onHomeComment"
+        android:id="@+id/backPostComment"
         />
     <TextView
         android:layout_weight="0.9"

@@ -3,77 +3,76 @@ package com.saadullahkhan.i190474;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
 
-import android.content.Intent;
+import android.app.Fragment;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
-import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 
 public class Home extends AppCompatActivity {
 
-    Button drawer;
-    DrawerLayout drawerLayout;
-
+    BottomNavigationView bottomNav;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        drawer = findViewById(R.id.drawerButton);
-        drawerLayout = findViewById(R.id.drawerLayout);
 
-        NavigationView navView = findViewById(R.id.nav);
-        navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+        bottomNav = findViewById(R.id.bottomNavigation);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new HomeFragment(),"home").commit();
+        bottomNav.getMenu().findItem(R.id.bNavHome).setChecked(true);
+        bottomNav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id = item.getItemId();
-                if(id == R.id.i1){
-                    startActivity(new Intent(Home.this, Profile.class));
+                if(item.getItemId() == R.id.bNavHome){
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new HomeFragment(),"home").addToBackStack(null).commit();
+                }else if(item.getItemId() == R.id.bNavLiked){
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new LikedFragment(),"liked").addToBackStack(null).commit();
+                }else if(item.getItemId() == R.id.bNavLater){
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new LaterFragment(),"later").addToBackStack(null).commit();
+                }else if(item.getItemId() == R.id.bNavSearch){
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new SearchFragment(),"search").addToBackStack(null).commit();
+                }else if(item.getItemId() == R.id.bNavAdd){
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new AddFragment(),"add").addToBackStack(null).commit();
                 }
-                if(id == R.id.i2){
-                    startActivity(new Intent(Home.this, EditProfile.class));
-                }
-                if(id == R.id.i3){
-                    finish();
-                }
-                return true ;
+                return true;
             }
         });
-
-
-        drawer.setOnClickListener(new View.OnClickListener() {
+        getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
             @Override
-            public void onClick(View view) {
-                drawerLayout.openDrawer(GravityCompat.START);
-
+            public void onBackStackChanged() {
+                if(getSupportFragmentManager().findFragmentByTag("home") != null && getSupportFragmentManager().findFragmentByTag("home").isVisible()){
+                    bottomNav.getMenu().findItem(R.id.bNavHome).setChecked(true);
+                }else if(getSupportFragmentManager().findFragmentByTag("liked") != null && getSupportFragmentManager().findFragmentByTag("liked").isVisible()){
+                    bottomNav.getMenu().findItem(R.id.bNavLiked).setChecked(true);
+                }else if(getSupportFragmentManager().findFragmentByTag("later") != null && getSupportFragmentManager().findFragmentByTag("later").isVisible()){
+                    bottomNav.getMenu().findItem(R.id.bNavLater).setChecked(true);
+                }else if(getSupportFragmentManager().findFragmentByTag("search") != null && getSupportFragmentManager().findFragmentByTag("search").isVisible()){
+                    bottomNav.getMenu().findItem(R.id.bNavSearch).setChecked(true);
+                }else if(getSupportFragmentManager().findFragmentByTag("add") != null && getSupportFragmentManager().findFragmentByTag("add").isVisible()){
+                    bottomNav.getMenu().findItem(R.id.bNavAdd).setChecked(true);
+                }else if(getSupportFragmentManager().findFragmentByTag("uploadMusic") != null && getSupportFragmentManager().findFragmentByTag("uploadMusic").isVisible()){
+                    bottomNav.getMenu().findItem(R.id.bNavAdd).setChecked(true);
+                }else if(getSupportFragmentManager().findFragmentByTag("record") != null && getSupportFragmentManager().findFragmentByTag("record").isVisible()){
+                    bottomNav.getMenu().findItem(R.id.bNavAdd).setChecked(true);
+                }else if(getSupportFragmentManager().findFragmentByTag("selectPlayList") != null && getSupportFragmentManager().findFragmentByTag("selectPlayList").isVisible()){
+                    bottomNav.getMenu().findItem(R.id.bNavAdd).setChecked(true);
+                }else if(getSupportFragmentManager().findFragmentByTag("songTitle") != null && getSupportFragmentManager().findFragmentByTag("songTitle").isVisible()){
+                    bottomNav.getMenu().findItem(R.id.bNavHome).setChecked(true);
+                }else if(getSupportFragmentManager().findFragmentByTag("postComment") != null && getSupportFragmentManager().findFragmentByTag("postComment").isVisible()){
+                    bottomNav.getMenu().findItem(R.id.bNavHome).setChecked(true);
+                }else if(getSupportFragmentManager().findFragmentByTag("profile") != null && getSupportFragmentManager().findFragmentByTag("profile").isVisible()){
+                    bottomNav.getMenu().findItem(R.id.bNavHome).setChecked(true);
+                }else if(getSupportFragmentManager().findFragmentByTag("editProfile") != null && getSupportFragmentManager().findFragmentByTag("editProfile").isVisible()){
+                    bottomNav.getMenu().findItem(R.id.bNavHome).setChecked(true);
+                }
             }
         });
-    }
 
-    public void onAddHome(View v){
-        startActivity(new Intent(Home.this, AddMusic.class));
     }
-    public void onSearchHome(View v){
-        startActivity(new Intent(Home.this, Search.class));
-    }
-    public void onCommentHome(View v){
-        startActivity(new Intent(Home.this, PostComment.class));
-    }
-    public void onLikedHome(View v){
-        startActivity(new Intent(Home.this, Liked.class));
-    }
-    public void onLaterHome(View v){
-        startActivity(new Intent(Home.this, Later.class));
-    }
-    public void onTitleHome(View v){
-        startActivity(new Intent(Home.this, SongTitle.class));
-    }
-
 }

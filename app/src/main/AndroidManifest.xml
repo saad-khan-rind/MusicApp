@@ -13,39 +13,6 @@
         android:theme="@style/Theme.Assignment1"
         tools:targetApi="31" >
         <activity
-            android:name=".SelectPlaylist"
-            android:exported="false" />
-        <activity
-            android:name=".EditProfile"
-            android:exported="false" />
-        <activity
-            android:name=".Profile"
-            android:exported="false" />
-        <activity
-            android:name=".SongTitle"
-            android:exported="false" />
-        <activity
-            android:name=".Record"
-            android:exported="false" />
-        <activity
-            android:name=".Later"
-            android:exported="false" />
-        <activity
-            android:name=".Liked"
-            android:exported="false" />
-        <activity
-            android:name=".PostComment"
-            android:exported="false" />
-        <activity
-            android:name=".Search"
-            android:exported="false" />
-        <activity
-            android:name=".UploadMusic"
-            android:exported="false" />
-        <activity
-            android:name=".AddMusic"
-            android:exported="false" />
-        <activity
             android:name=".Home"
             android:exported="false" />
         <activity

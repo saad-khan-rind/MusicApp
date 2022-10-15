@@ -1,14 +1,17 @@
 package com.saadullahkhan.i190474;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class SongTitle extends AppCompatActivity {
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+public class SongTitleFragment extends Fragment {
     ImageView titlePlay;
     ImageView titlePause;
     ImageView titleIcon1;
@@ -18,27 +21,27 @@ public class SongTitle extends AppCompatActivity {
     ImageView titleIcon5;
     ImageView titlebar1;
     ImageView titlebar2;
+    ImageView back;
 
 
     TextView titleTime1;
     TextView titleTime2;
 
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_song_title);
-        titlePause = findViewById(R.id.titlePause);
-        titlePlay = findViewById(R.id.titlePlay);
-        titleIcon1 = findViewById(R.id.titleIcon1);
-        titleIcon2 = findViewById(R.id.titleIcon2);
-        titleIcon3 = findViewById(R.id.titleIcon3);
-        titleIcon4 = findViewById(R.id.titleIcon4);
-        titleIcon5 = findViewById(R.id.titleIcon5);
-        titleTime1 = findViewById(R.id.titleTime1);
-        titleTime2 = findViewById(R.id.titleTime2);
-        titlebar1 = findViewById(R.id.titleBar1);
-        titlebar2 = findViewById(R.id.titleBar2);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        titlePause = getView().findViewById(R.id.titlePause);
+        titlePlay = getView().findViewById(R.id.titlePlay);
+        titleIcon1 = getView().findViewById(R.id.titleIcon1);
+        titleIcon2 = getView().findViewById(R.id.titleIcon2);
+        titleIcon3 = getView().findViewById(R.id.titleIcon3);
+        titleIcon4 = getView().findViewById(R.id.titleIcon4);
+        titleIcon5 = getView().findViewById(R.id.titleIcon5);
+        titleTime1 = getView().findViewById(R.id.titleTime1);
+        titleTime2 = getView().findViewById(R.id.titleTime2);
+        titlebar1 = getView().findViewById(R.id.titleBar1);
+        titlebar2 = getView().findViewById(R.id.titleBar2);
+        back = getView().findViewById(R.id.backSongTitle);
         titlePlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,8 +74,17 @@ public class SongTitle extends AppCompatActivity {
                 titlebar2.setVisibility(View.INVISIBLE);
             }
         });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().onBackPressed();
+            }
+        });
+
     }
-    public void onHomeTitle(View v){
-        finish();
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_song_title,container,false);
     }
 }

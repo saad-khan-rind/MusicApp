@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SongTitle"
+    tools:context=".MainActivity"
     android:background="@color/black"
     android:orientation="vertical">
     <LinearLayout
@@ -24,8 +24,8 @@
             />
 
         <ImageView
+            android:id="@+id/backSongTitle"
             android:layout_weight="0.1"
-            android:onClick="onHomeTitle"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:clickable="true"
@@ -212,135 +212,6 @@
             android:layout_marginEnd="40dp"
             android:layout_weight="1"
             />
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/purple"
-        android:orientation="horizontal"
-        android:gravity="bottom"
-        android:weightSum="4">
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:weightSum="1">
-                <ImageView
-                    android:layout_marginTop="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_height="0dp"
-                    android:gravity="center"
-                    android:layout_weight="0.6"
-                    android:src="@drawable/liked"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:text="@string/liked"
-                    android:layout_weight="0.4"
-                    android:textColor="@color/white"
-                    android:gravity="center"/>
-            </LinearLayout>
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:weightSum="1">
-                <ImageView
-                    android:layout_marginTop="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="0.6"
-                    android:gravity="center"
-                    android:src="@drawable/add"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:text="@string/add"
-                    android:layout_weight="0.4"
-                    android:textColor="@color/white"
-                    android:gravity="center"/>
-            </LinearLayout>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:weightSum="1">
-                <ImageView
-                    android:layout_marginTop="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="0.6"
-                    android:gravity="center"
-                    android:src="@drawable/search"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:text="@string/search"
-                    android:layout_weight="0.4"
-                    android:layout_marginTop="5dp"
-                    android:textColor="@color/white"
-                    android:gravity="center"/>
-            </LinearLayout>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:weightSum="1">
-                <ImageView
-                    android:layout_marginTop="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="0.6"
-                    android:src="@drawable/later"
-                    android:gravity="center"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:text="@string/later"
-                    android:layout_weight="0.4"
-                    android:textColor="@color/white"
-                    android:gravity="center"/>
-            </LinearLayout>
-        </LinearLayout>
 
     </LinearLayout>
 
