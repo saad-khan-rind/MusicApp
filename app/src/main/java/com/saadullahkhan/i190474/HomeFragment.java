@@ -1,6 +1,10 @@
 package com.saadullahkhan.i190474;
 
+import static android.content.ContentValues.TAG;
+
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -8,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,14 +21,28 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.ListResult;
+import com.google.firebase.storage.StorageReference;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomeFragment extends Fragment {
     Button drawer;
     DrawerLayout drawerLayout;
     LinearLayout song;
     ImageView postComment;
+    RecyclerView recyclerViewPlaylist;
+    HomePlayListAdapter playListAdapter;
+    List<PlayList> listPlayList;
+    StorageReference mDatabaseReference;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -32,6 +51,41 @@ public class HomeFragment extends Fragment {
         drawerLayout = getView().findViewById(R.id.drawerLayout);
         song = getView().findViewById(R.id.homeSong);
         postComment = getView().findViewById(R.id.homePostComment);
+        recyclerViewPlaylist = getView().findViewById(R.id.homePlaylistRecyclerView);
+
+
+        mDatabaseReference = FirebaseStorage.getInstance().getReference("/PlayLists");
+        mDatabaseReference.listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
+                    @Override
+                    public void onSuccess(ListResult listResult) {
+
+                        Log.d(TAG, mDatabaseReference.getName());
+                        for (StorageReference prefix : listResult.getPrefixes()) {
+                            Log.d(TAG, prefix.getName());
+                            for (StorageReference item : listResult.getItems()) {
+                                if(item.getName().equals("playlist.png")){
+                                    listPlayList.add(new PlayList(prefix.getName(),0,item.getDownloadUrl().getResult()));
+                                }
+                            }
+
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getActivity().getApplicationContext(),"Failed List",Toast.LENGTH_LONG).show();
+                    }
+                });
+
+
+        listPlayList = new ArrayList<>();
+
+        playListAdapter = new HomePlayListAdapter(listPlayList,getActivity().getApplicationContext());
+        RecyclerView.LayoutManager lm = new LinearLayoutManager(getActivity().getApplicationContext(),LinearLayoutManager.HORIZONTAL,true);
+        recyclerViewPlaylist.setLayoutManager(lm);
+        recyclerViewPlaylist.setAdapter(playListAdapter);
+
         NavigationView navView = getView().findViewById(R.id.nav);
 
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
