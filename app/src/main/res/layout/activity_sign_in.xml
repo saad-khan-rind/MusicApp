@@ -21,6 +21,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"/>
         <TextView
+            android:id="@+id/signUpSignIn"
             android:padding="10dp"
             android:layout_weight="1"
             android:layout_width="0dp"
@@ -30,8 +31,7 @@
             android:textColor="@color/white"
             android:textStyle="bold"
             android:textSize="20sp"
-            android:clickable="true"
-            android:onClick="onSignUpSI"/>
+            android:clickable="true"/>
 
     </LinearLayout>
         <LinearLayout
@@ -81,6 +81,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"/>
             <EditText
+                android:id="@+id/numberSignIn"
                 android:layout_weight="0.9"
                 android:padding="10dp"
                 android:layout_width="0dp"
@@ -88,7 +89,8 @@
                 android:background="@drawable/edittext"
                 android:textColor="@color/black"
                 android:textColorHint="@color/yellow"
-                android:hint="@string/name"
+                android:hint="@string/number"
+                android:inputType="phone"
                 />
         </LinearLayout>
 
@@ -134,8 +136,7 @@
                         android:textColor="@color/yellow"
                         android:textSize="20sp"
                         android:clickable="true"
-                        android:visibility="visible"
-                        android:onClick="onShowSignIn" />
+                        android:visibility="visible" />
                     <TextView
                         android:layout_alignEnd="@+id/passwordSignIn"
                         android:id="@+id/hideSignIn"
@@ -147,8 +148,7 @@
                         android:textColor="@color/yellow"
                         android:textSize="20sp"
                         android:visibility="invisible"
-                        android:clickable="true"
-                        android:onClick="onHideSignIn" />
+                        android:clickable="true" />
             </RelativeLayout>
         </LinearLayout>
 
@@ -168,6 +168,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"/>
         <android.widget.Button
+            android:id="@+id/signInButton"
             android:layout_weight="0.9"
             android:layout_width="0dp"
             android:layout_height="60dp"

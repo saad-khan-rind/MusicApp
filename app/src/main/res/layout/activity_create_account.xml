@@ -21,6 +21,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"/>
     <TextView
+        android:id="@+id/signInSignUp"
         android:padding="10dp"
         android:layout_weight="1"
         android:layout_width="0dp"
@@ -30,8 +31,7 @@
         android:textColor="@color/white"
         android:textStyle="bold"
         android:textSize="20sp"
-        android:clickable="true"
-        android:onClick="onSignInCA"/>
+        android:clickable="true"/>
     </LinearLayout>
 
     <LinearLayout
@@ -81,6 +81,7 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"/>
                 <EditText
+                    android:id="@+id/nameSignUp"
                     android:padding="10dp"
                     android:layout_weight="0.9"
                     android:layout_width="0dp"
@@ -110,6 +111,7 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"/>
                 <EditText
+                    android:id="@+id/numberSignUp"
                     android:padding="10dp"
                     android:layout_weight="0.9"
                     android:layout_width="0dp"
@@ -117,7 +119,8 @@
                     android:background="@drawable/edittext"
                     android:textColor="@color/black"
                     android:textColorHint="@color/yellow"
-                    android:hint="@string/email"
+                    android:hint= "@string/number"
+                    android:inputType="phone"
                     />
 
             </LinearLayout>
@@ -166,7 +169,6 @@
                     android:textSize="20sp"
                     android:clickable="true"
                     android:visibility="visible"
-                    android:onClick="onShowCreateAccount"
                     />
                 <TextView
                     android:layout_alignEnd="@+id/passwordCreateAccount"
@@ -180,7 +182,6 @@
                     android:textSize="20sp"
                     android:visibility="invisible"
                     android:clickable="true"
-                    android:onClick="onHideCreateAccount"
                     />
 
                 </RelativeLayout>
@@ -196,6 +197,23 @@
         android:layout_width="match_parent"
         android:layout_height="10dp"/>
 
+<!--    <LinearLayout-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:weightSum="1">-->
+<!--        <View-->
+<!--            android:layout_weight="0.05"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="0dp"/>-->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/gender"-->
+<!--            android:textColor="@color/yellow"-->
+<!--            android:textSize="20sp"-->
+<!--            />-->
+<!--    </LinearLayout>-->
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -205,17 +223,88 @@
             android:layout_weight="0.05"
             android:layout_width="0dp"
             android:layout_height="0dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/gender"
-            android:textColor="@color/yellow"
-            android:textSize="20sp"
+        <EditText
+            android:id="@+id/otpSignUp"
+            android:padding="10dp"
+            android:layout_weight="0.9"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:background="@drawable/edittext"
+            android:textColor="@color/black"
+            android:textColorHint="@color/yellow"
+            android:hint="@string/OTP"
             />
     </LinearLayout>
+
+
+<!--    <LinearLayout-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:weightSum="1">-->
+<!--        <View-->
+<!--            android:layout_weight="0.05"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="0dp"/>-->
+
+<!--    <RadioGroup-->
+<!--        android:gravity="center"-->
+<!--        android:layout_weight="0.9"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        >-->
+<!--        <android.widget.RadioButton-->
+<!--            android:layout_width="60dp"-->
+<!--            android:layout_height="60dp"-->
+<!--            android:button="@drawable/selectorm"-->
+<!--            android:clickable="true"/>-->
+<!--        <View-->
+<!--            android:layout_width="30dp"-->
+<!--            android:layout_height="50dp"/>-->
+
+<!--        <android.widget.RadioButton-->
+<!--            android:layout_width="60dp"-->
+<!--            android:layout_height="60dp"-->
+<!--            android:button="@drawable/selectorf"-->
+<!--            android:clickable="true"/>-->
+<!--        <View-->
+<!--            android:layout_width="30dp"-->
+<!--            android:layout_height="50dp"/>-->
+
+<!--        <android.widget.RadioButton-->
+<!--            android:layout_width="60dp"-->
+<!--            android:layout_height="60dp"-->
+<!--            android:button="@drawable/selectorn"-->
+<!--            android:clickable="true"/>-->
+
+<!--    </RadioGroup>-->
+<!--    </LinearLayout>-->
     <View
         android:layout_width="match_parent"
-        android:layout_height="15dp"/>
+        android:layout_height="10dp"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+        <View
+            android:layout_weight="0.05"
+            android:layout_width="0dp"
+            android:layout_height="0dp"/>
+
+        <android.widget.Button
+            android:id="@+id/otpGenerate"
+            android:layout_width="0dp"
+            android:layout_weight="0.9"
+            android:layout_height="60dp"
+            android:background="@drawable/yellowbutton"
+            android:clickable="true"
+            android:text="@string/Generate"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
@@ -227,67 +316,19 @@
             android:layout_width="0dp"
             android:layout_height="0dp"/>
 
-    <RadioGroup
-        android:gravity="center"
-        android:layout_weight="0.9"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-        <android.widget.RadioButton
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:button="@drawable/selectorm"
-            android:clickable="true"/>
-        <View
-            android:layout_width="30dp"
-            android:layout_height="50dp"/>
-
-        <android.widget.RadioButton
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:button="@drawable/selectorf"
-            android:clickable="true"/>
-        <View
-            android:layout_width="30dp"
-            android:layout_height="50dp"/>
-
-        <android.widget.RadioButton
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:button="@drawable/selectorn"
-            android:clickable="true"/>
-
-    </RadioGroup>
+<!--    <CheckBox-->
+<!--        android:layout_weight="0.9"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/newsletter"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="16sp"-->
+<!--        android:buttonTint="@color/white"-->
+<!--        />-->
     </LinearLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="10dp"/>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="1">
-        <View
-            android:layout_weight="0.05"
-            android:layout_width="0dp"
-            android:layout_height="0dp"/>
-
-    <CheckBox
-        android:layout_weight="0.9"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/newsletter"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        android:buttonTint="@color/white"
-        />
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="10dp"/>
-
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -299,6 +340,7 @@
             android:layout_height="0dp"/>
 
     <android.widget.Button
+        android:id="@+id/signUpButton"
         android:layout_width="0dp"
         android:layout_weight="0.9"
         android:layout_height="60dp"

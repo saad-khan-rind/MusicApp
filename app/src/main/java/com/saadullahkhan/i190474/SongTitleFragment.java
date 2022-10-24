@@ -1,5 +1,6 @@
 package com.saadullahkhan.i190474;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +22,7 @@ public class SongTitleFragment extends Fragment {
     ImageView titleIcon5;
     ImageView titlebar1;
     ImageView titlebar2;
-    ImageView back;
+    ImageView back,chatButton;
 
 
     TextView titleTime1;
@@ -30,6 +31,7 @@ public class SongTitleFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        chatButton = getView().findViewById(R.id.chatButton);
         titlePause = getView().findViewById(R.id.titlePause);
         titlePlay = getView().findViewById(R.id.titlePlay);
         titleIcon1 = getView().findViewById(R.id.titleIcon1);
@@ -78,6 +80,12 @@ public class SongTitleFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 getActivity().onBackPressed();
+            }
+        });
+        chatButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity().getApplicationContext(),ChattingActivity.class));
             }
         });
 

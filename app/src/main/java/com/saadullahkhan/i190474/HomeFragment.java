@@ -27,6 +27,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.ListResult;
 import com.google.firebase.storage.StorageReference;
@@ -42,7 +43,6 @@ public class HomeFragment extends Fragment {
     RecyclerView recyclerViewPlaylist;
     HomePlayListAdapter playListAdapter;
     List<PlayList> listPlayList;
-    StorageReference mDatabaseReference;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -52,32 +52,6 @@ public class HomeFragment extends Fragment {
         song = getView().findViewById(R.id.homeSong);
         postComment = getView().findViewById(R.id.homePostComment);
         recyclerViewPlaylist = getView().findViewById(R.id.homePlaylistRecyclerView);
-
-
-        mDatabaseReference = FirebaseStorage.getInstance().getReference("/PlayLists");
-        mDatabaseReference.listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
-                    @Override
-                    public void onSuccess(ListResult listResult) {
-
-                        Log.d(TAG, mDatabaseReference.getName());
-                        for (StorageReference prefix : listResult.getPrefixes()) {
-                            Log.d(TAG, prefix.getName());
-                            for (StorageReference item : listResult.getItems()) {
-                                if(item.getName().equals("playlist.png")){
-                                    listPlayList.add(new PlayList(prefix.getName(),0,item.getDownloadUrl().getResult()));
-                                }
-                            }
-
-                        }
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getActivity().getApplicationContext(),"Failed List",Toast.LENGTH_LONG).show();
-                    }
-                });
-
 
         listPlayList = new ArrayList<>();
 
@@ -109,6 +83,7 @@ public class HomeFragment extends Fragment {
                     fragmentTransaction.commit();
                 }
                 if(id == R.id.i3){
+                    FirebaseAuth.getInstance().signOut();
                     getActivity().finish();
                 }
                 return true ;

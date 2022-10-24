@@ -8,9 +8,15 @@ import androidx.fragment.app.FragmentManager;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class Home extends AppCompatActivity {
@@ -26,6 +32,17 @@ public class Home extends AppCompatActivity {
         bottomNav = findViewById(R.id.bottomNavigation);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new HomeFragment(),"home").commit();
         bottomNav.getMenu().findItem(R.id.bNavHome).setChecked(true);
+        FirebaseDatabase.getInstance().getReference().child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("name").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Toast.makeText(getApplicationContext(),"Welcome "+snapshot.getValue(String.class),Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         bottomNav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

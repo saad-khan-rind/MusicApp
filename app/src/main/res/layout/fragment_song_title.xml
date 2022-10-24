@@ -12,8 +12,16 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="1">
+        <ImageView
+            android:id="@+id/chatButton"
+            android:layout_width="0dp"
+            android:layout_weight="0.15"
+            android:layout_height="50dp"
+            android:src="@drawable/chat"
+            />
+
         <TextView
-            android:layout_weight="0.9"
+            android:layout_weight="0.75"
             android:gravity="center"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

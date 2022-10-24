@@ -72,8 +72,12 @@
     <string name="profileSong4">Songs: 4</string>
     <string name="selectPlaylist">Select Playlist</string>
     <string name="Open">NavBar</string>
+    <string name="number">Number With Country Code</string>
     <string name="Close">NavBar</string>
     <string name="Home">Home</string>
+    <string name="OTP">OTP</string>
+    <string name="messages">MESSAGES</string>
+    <string name="Generate">Generate OTP</string>
 
     <string name="newsletter">I would like to receive your newsletter and other promotional information.</string>
 
