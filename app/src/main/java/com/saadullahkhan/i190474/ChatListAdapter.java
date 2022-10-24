@@ -18,7 +18,6 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.MyView
         this.ls = ls;
         this.c = c;
     }
-
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
