@@ -47,11 +47,18 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"/>
 </LinearLayout>
-    <androidx.recyclerview.widget.RecyclerView
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/contactsRecycler"
-
-        />
+        android:layout_height="450dp"
+        android:id="@+id/fragmentContainerChat"/>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:menu="@menu/bottom_navigation_chat"
+        android:background="@color/purple"
+        app:itemIconTint="@color/yellow"
+        app:itemIconSize="50dp"
+        app:itemTextColor="@color/white"
+        android:id="@+id/bottomNavigationChat"/>
 
 </LinearLayout>

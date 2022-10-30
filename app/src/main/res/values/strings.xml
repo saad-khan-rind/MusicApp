@@ -76,6 +76,7 @@
     <string name="Close">NavBar</string>
     <string name="Home">Home</string>
     <string name="OTP">OTP</string>
+    <string name="Contacts">Contacts</string>
     <string name="messages">MESSAGES</string>
     <string name="Generate">Generate OTP</string>
 

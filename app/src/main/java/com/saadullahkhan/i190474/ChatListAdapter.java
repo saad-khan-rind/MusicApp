@@ -28,7 +28,7 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.MyView
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.name.setText(ls.get(position).getName());
-
+        holder.number.setText(ls.get(position).getNumber());
     }
 
     @Override
@@ -36,10 +36,11 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.MyView
         return ls.size();
     }
     public static class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView name;
+        TextView name,number;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.nameRowChat);
+            number = itemView.findViewById(R.id.numberRowChat);
         }
 
     }
